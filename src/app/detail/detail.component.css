@@ -1,0 +1,23 @@
+ .th1{
+     width:50px;
+ }
+
+  .th2{
+     width:200px;
+ }
+
+   .th3{
+     width:650px;
+ }
+
+
+ .tru{
+     width: 180px;
+     white-space:nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
+
+ .xxx{
+     margin-top: 2px;
+ }

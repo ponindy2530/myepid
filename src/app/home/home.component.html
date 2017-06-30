@@ -1,0 +1,34 @@
+<div class="columns is-multiline">
+  <div class="column  is-4" *ngFor="let item of jobData;let i=index">
+    <div class="card">
+      <div class="card-image">
+        <a (click)="clickjobData(item)">
+          <figure class="image is-4by3">
+            <img [src]="item.imgslogo" alt="Image">
+            <span class="card-title" *ngIf="item.latupdate">
+  <span class="tag is-danger">{{item.latupdate|date}}</span>
+            </span>
+          </figure>
+        </a>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img [src]="item.imgs" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">{{item.fullname}}</p>
+            <p class="subtitle is-6">{{item.position}} | {{item.a |number}} / {{item.b|number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+ <app-show-profile  *ngIf="profile" [profileItem]="profileItem" [key]="1" [stitle]="'เจ้าของงาน'" [col]="'notification is-info'"></app-show-profile>
+<br />
+<app-show-profile  *ngIf="profile" [profileItem]="profileItem" [key]="2" [stitle]="'พื้นที่'" [col]="'notification is-warning'"></app-show-profile>
+
