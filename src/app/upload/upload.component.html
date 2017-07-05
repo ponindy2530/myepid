@@ -1,5 +1,3 @@
-
-
 <!--<h1 class="title"><i class="fa fa-upload" aria-hidden="true"></i> UPLOAD</h1>-->
 <nav class="level is-mobile box">
   <div class="level-item has-text-centered">
@@ -30,247 +28,286 @@
 <!--<hr>-->
 
 <form (ngSubmit)="save()">
+  <div class="columns">
+    <div class="column is-6">
 
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">เรื่อง</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <input class="input" [(ngModel)]="model.title" id="title" name="title" type="text" placeholder="เรื่อง">
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">เรื่อง ***</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" [(ngModel)]="model.title" id="title" name="title" type="text" placeholder="เรื่อง">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">รายละเอียด</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <textarea class="textarea" [(ngModel)]="model.detail" id="detail" name="detail"  placeholder="รายละเอียด"></textarea>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">รายละเอียด ***</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <textarea class="textarea" [(ngModel)]="model.detail" id="detail" name="detail" placeholder="รายละเอียด"></textarea>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">งาน</label>
-  </div>
-  <div class="field-body">
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.job" id="job" name="job">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">ผู้รับผิดชอบงาน ***</label>
+        </div>
+        <div class="field-body">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.job" id="job" name="job">
             <option value="0">ตัวเลือก</option>
             <option *ngFor="let item of jobData" value="{{item.id}}">{{item.job}}</option>
           </select>
+          </div>
         </div>
-  </div>
-</div>
+      </div>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">ประเภท</label>
-  </div>
-  <div class="field-body">
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.catid" id="catid" name="catid">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">ประเภท ***</label>
+        </div>
+        <div class="field-body">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.catid" id="catid" name="catid">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of catData" value="{{item.catid}}">{{item.catname}}</option>
           </select>
+          </div>
         </div>
-  </div>
-</div>
+      </div>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">กลุ่ม</label>
-  </div>
-  <div class="field-body">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">กลุ่ม ***</label>
+        </div>
+        <div class="field-body">
 
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.hgroup" id="hgroup" name="hgroup" (change)="getsw($event)">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.hgroup" id="hgroup" name="hgroup" (change)="getsw($event)">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of groupData" value="{{item.id}}">{{item.gname}}</option>
           </select>
+          </div>
+
         </div>
+      </div>
 
-  </div>
-</div>
+      <div class="field is-horizontal" *ngIf="model.hgroup==1">
+        <div class="field-label is-normal">
+          <label class="label">สสจ. ***</label>
+        </div>
+        <div class="field-body">
 
-<div class="field is-horizontal" *ngIf="model.hgroup==1">
-  <div class="field-label is-normal">
-    <label class="label">สสจ.</label>
-  </div>
-  <div class="field-body">
-
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of swData" value="{{item.hcode}}">{{item.hname}}</option>
           </select>
+          </div>
+
         </div>
+      </div>
 
-  </div>
-</div>
+      <div class="field is-horizontal" *ngIf="model.hgroup==2">
+        <div class="field-label is-normal">
+          <label class="label">สสอ. ***</label>
+        </div>
+        <div class="field-body">
 
-<div class="field is-horizontal" *ngIf="model.hgroup==2">
-  <div class="field-label is-normal">
-    <label class="label">สสอ.</label>
-  </div>
-  <div class="field-body">
-
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of swData" value="{{item.hcode}}">{{item.hname}}</option>
           </select>
+          </div>
+
         </div>
+      </div>
 
-  </div>
-</div>
+      <div class="field is-horizontal" *ngIf="model.hgroup==3">
+        <div class="field-label is-normal">
+          <label class="label">โรงพยาบาล ***</label>
+        </div>
+        <div class="field-body">
 
-<div class="field is-horizontal" *ngIf="model.hgroup==3">
-  <div class="field-label is-normal">
-    <label class="label">โรงพยาบาล</label>
-  </div>
-  <div class="field-body">
-
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of swData" value="{{item.hcode}}">{{item.hname}}</option>
           </select>
+          </div>
+
         </div>
+      </div>
 
-  </div>
-</div>
+      <div class="field is-horizontal" *ngIf="model.hgroup==4">
+        <div class="field-label is-normal">
+          <label class="label">อำเภอ ***</label>
+        </div>
+        <div class="field-body">
 
-<div class="field is-horizontal" *ngIf="model.hgroup==4">
-  <div class="field-label is-normal">
-    <label class="label">อำเภอ</label>
-  </div>
-  <div class="field-body">
-
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.ampcode" id="ampcode" name="ampcode" (change)="getswct($event,model.hgroup)">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.ampcode" id="ampcode" name="ampcode" (change)="getswct($event,model.hgroup)">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of ampData" value="{{item.ampcode}}">{{item.ampname}}</option>
           </select>
+          </div>
+
         </div>
+      </div>
 
-  </div>
-</div>
+      <div class="field is-horizontal" *ngIf="model.hgroup==4 && model.ampcode">
+        <div class="field-label is-normal">
+          <label class="label">รพสต. ***</label>
+        </div>
+        <div class="field-body">
 
-<div class="field is-horizontal" *ngIf="model.hgroup==4 && model.ampcode">
-  <div class="field-label is-normal">
-    <label class="label">รพสต.</label>
-  </div>
-  <div class="field-body">
-
-        <div class="select is-fullwidth">
-          <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
+          <div class="select is-fullwidth">
+            <select [(ngModel)]="model.hcode" id="hcode" name="hcode">
             <option value="0" selected disabled>ตัวเลือก</option>
             <option *ngFor="let item of swData" value="{{item.hcode}}">{{item.hname}}</option>
           </select>
+          </div>
+
         </div>
-
-  </div>
-</div>
+      </div>
 
 
 
-<p-growl [value]="msgs"></p-growl>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">เอกสาร</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <p-fileUpload name="file" [url]="docUrl" (onUpload)="onUploadDoc($event)" auto="auto" multiple="multiple" [accept]="docAccept"
-          [maxFileSize]="maxFileSize">
-          <ng-template pTemplate type="content">
 
-          </ng-template>
-        </p-fileUpload>
-        <div class="box" *ngIf="uploadedFilesDoc.length">
-          <article class="media" *ngFor="let file of uploadedFilesDoc;let i=index">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p class="truncate">
-                  {{i+1}}{{file.generatedName}}
-                </p>
+
+
+
+
+
+
+    </div>
+    <div class="column is-6">
+      <p-growl [value]="msgs"></p-growl>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">เอกสาร</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <p-fileUpload name="file" [url]="docUrl" (onUpload)="onUploadDoc($event)" auto="auto" multiple="multiple" [accept]="docAccept"
+                [maxFileSize]="maxFileSize">
+                <ng-template pTemplate type="content">
+
+                </ng-template>
+              </p-fileUpload>
+              <div class="box" *ngIf="uploadedFilesDoc.length">
+                <article class="media" *ngFor="let file of uploadedFilesDoc;let i=index">
+                  <figure class="media-left">
+                    <p class="image is-64x64">
+                      <i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p class="truncate">
+                        {{i+1}}{{file.generatedName}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="media-right">
+                    <a href="javascript:void(0)" pTooltip="ลบ" tooltipPosition="top" class="delete" (click)="delete(docType,file.generatedName,i)"></a>
+                  </div>
+                </article>
               </div>
             </div>
-            <div class="media-right">
-              <a href="javascript:void(0)" pTooltip="ลบ" tooltipPosition="top" class="delete" (click)="delete(docType,file.generatedName,i)"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">รูปภาพ</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p-fileUpload name="file" [url]="imgUrl" (onUpload)="onUploadImg($event)" auto="auto" multiple="multiple" [accept]="imgAccept"
+              [maxFileSize]="maxFileSize">
+              <ng-template pTemplate type="content">
+
+              </ng-template>
+            </p-fileUpload>
+
+            <div class="box" *ngIf="uploadedFilesImg.length">
+              <article class="media" *ngFor="let file of uploadedFilesImg;let i=index">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="{{imgFolder}}{{file.generatedName}}">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p class="truncate">
+                      {{i+1}}{{file.generatedName}}
+                    </p>
+                  </div>
+                </div>
+                <div class="media-right">
+                  <a href="javascript:void(0)" pTooltip="ลบ" tooltipPosition="top" class="delete" (click)="deleteImg(imgType,file.generatedName,i)"></a>
+                </div>
+              </article>
             </div>
-          </article>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">หมวดหมู่</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="model.type1" id="type1" name="type1">
+          ประชาสัมพันธ์
+        </label>
+            </div>
+            <div class="control">
+              <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="model.type2" id="type2" name="type2">
+           public
+        </label>
+            </div>
+
+            <div class="control">
+              <label class="checkbox" [(ngModel)]="model.type3" id="type3" name="type3">
+          <input type="checkbox">
+          private
+        </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <button class="button is-primary is-fullwidth">
+          บันทึก
+        </button>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">รูปภาพ</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <p-fileUpload name="file" [url]="imgUrl" (onUpload)="onUploadImg($event)" auto="auto" multiple="multiple" [accept]="imgAccept"
-        [maxFileSize]="maxFileSize">
-        <ng-template pTemplate type="content">
-
-        </ng-template>
-      </p-fileUpload>
-
-      <div class="box" *ngIf="uploadedFilesImg.length">
-        <article class="media" *ngFor="let file of uploadedFilesImg;let i=index">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="{{imgFolder}}{{file.generatedName}}">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p class="truncate">
-                {{i+1}}{{file.generatedName}}
-              </p>
-            </div>
-          </div>
-          <div class="media-right">
-            <a href="javascript:void(0)" pTooltip="ลบ" tooltipPosition="top" class="delete" (click)="deleteImg(imgType,file.generatedName,i)"></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="field is-horizontal">
-  <div class="field-label">
-    <!-- Left empty for spacing -->
-  </div>
-  <div class="field-body">
-        <button class="button is-primary s-fullwidth">
-          บันทึก
-        </button>
-      </div>
-</div>
-
 </form>

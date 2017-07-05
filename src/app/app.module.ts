@@ -7,17 +7,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UploadComponent } from './upload/upload.component';
-import {PSharedModule} from './shared/p-shared.module';
+import { PSharedModule } from './shared/p-shared.module';
 import { DetailComponent } from './detail/detail.component';
 import { ShowProfileComponent } from './show-profile/show-profile.component';
+import { Home2Component } from './home2/home2.component';
+import { GalleriaComponent } from './galleria/galleria.component';
+import { BannerComponent } from './banner/banner.component';
+import { PublicComponent } from './public/public.component';
+import { PrivateComponent } from './private/private.component';
 
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home2', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'upload', component: UploadComponent },
   { path: 'detail', component: DetailComponent },
+  { path: 'home2', component: Home2Component },
   // { path: 'home', component: PccHomeComponent },
   // { path: 'editor', component: EditorComponent },
   // { path: 'welcome', component: WelcomeComponent },
@@ -36,7 +42,12 @@ const routes: Routes = [
     HomeComponent,
     UploadComponent,
     DetailComponent,
-    ShowProfileComponent
+    ShowProfileComponent,
+    Home2Component,
+    GalleriaComponent,
+    BannerComponent,
+    PublicComponent,
+    PrivateComponent
   ],
   imports: [
     BrowserModule,
